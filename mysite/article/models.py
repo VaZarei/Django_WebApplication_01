@@ -5,10 +5,10 @@ from django.db import models
 
 
 class ArticleModel(models.Model):
-    Title = models.CharField()
-    Body  = models.TextField()
-    Auther= models.ForeignKey("auth.user", on_delete=models.CASCADE)
-    Date  = models.DateTimeField(auto_now=True, auto_now_add=True)
+    Title = models.CharField(max_length=150)
+    Body  = models.TextField(max_length=10000)
+    Author= models.ForeignKey("auth.user", on_delete=models.CASCADE)
+    Date  = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self) -> str:

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block tabtitle %}Articles{% endblock tabtitle %}
+{% block title %}<h2>Articles to Read</h2>{% endblock title %}
+
+
+
+{% block content %}
+
+<br>
+<br>
+<hr>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col col-lg-6 ">
+        <strong>Article Name</strong>
+    </div>
+    <div class="col col-lg-2">
+        <strong>Author</strong>
+    </div>
+    <div class="col col-lg-2">
+       <strong>Edit</strong>
+    </div>
+    </div>
+</div>
+<hr>
+
+{% for article in articles  %}
+
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col col-lg-6">
+            <li>{{article.Title}}</li>
+        </div>
+        <div class="col col-lg-2">
+            <strong>{{article.Author}}</strong>
+        </div>
+        <div class="col col-lg-2">
+           Update | Delete
+        </div>
+        </div>
+    </div>
+    <hr>
+  
+{% endfor %}
+
+
+
+
+{% endblock content %}
+
+
+
+
+
