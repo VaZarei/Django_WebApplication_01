@@ -15,7 +15,7 @@ class ArticleAdmin(admin.ModelAdmin):
     search_fields= ["Title", "Author__username"]
     
     
-    readonly_fields = ("Created", "Edited",)
+    readonly_fields = ("Created", "Edited", "slug")
 
     fieldsets = (
 
@@ -26,7 +26,7 @@ class ArticleAdmin(admin.ModelAdmin):
             "fields" : ("Created", "Edited",)
         }),
         ("Content",{
-            "fields" : ("Body",)
+            "fields" : ("Body", "Status")
         })
     
     )
