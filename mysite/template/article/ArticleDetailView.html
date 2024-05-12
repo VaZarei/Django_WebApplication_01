@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block tabtitle %}Articles Details{% endblock tabtitle %}
+
+{% block title %}<h2>Articles Details for: "{{articles.Title}}"</h2>{% endblock title %}
+
+
+
+{% block content %}
+
+{{articles.Body}}
+
+{% endblock content %}
