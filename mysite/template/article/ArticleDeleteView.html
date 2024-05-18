@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Update Article : Article UpdateView{% endblock title %} 
+
+
+
+{% block content %}
+
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <h3>Are you Sure to delete this Article?</h3>
+    <input type="submit" value="save">Delete</input>
+       
+</form>
+
+
+{% endblock content %}
+
+
+
