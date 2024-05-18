@@ -1,10 +1,10 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import ArticleModel
 from django.urls import reverse_lazy, reverse
-from django.shortcuts import redirect
+
 
 # Create your views here.
 
@@ -20,6 +20,13 @@ class ArticleListView(ListView):
         return ArticleModel.objects.filter(Status='published')
     
 
+class ArticleCreateView(CreateView):
+    model = ArticleModel
+    fields = ["Title", "Body", "Author", "Status"]
+    template_name = "article/ArticleCreateView.html"
+    success_url = reverse_lazy("ArticleListView_url")
+    
+
 class ArticleDetailView(DetailView):
     model = ArticleModel
     template_name = "article/ArticleDetailView.html"
@@ -30,13 +37,14 @@ class ArticleUpdateView(UpdateView):
     model = ArticleModel
     fields = ["Title", "Body"]
     template_name = "article/ArticleUpdateView.html"
-    context_object_name = "articles"
+    
     success_url = reverse_lazy("ArticleListView_url")
 
 class ArticleDeleteView(DeleteView):
     model = ArticleModel
     template_name = "article/ArticleDeleteView.html"
     success_url = reverse_lazy("ArticleListView_url")
+    context_object_name = "articles"
     
     
 

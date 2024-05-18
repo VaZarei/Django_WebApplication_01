@@ -5,17 +5,15 @@
 
 {% block content %}
 
-</h3>Article Title: {{articles.Title}}</>
-
 <form action="" method="POST">
 
     {% csrf_token %}
     {{form.as_p}}
 
-    <h5>Are you Sure to delete this Article?</h5>
-    <input type="submit" value="save">Delete</input>
-       
+    <input type="submit" value="Create Article">
+    
 </form>
+
 
 
 {% endblock content %}
