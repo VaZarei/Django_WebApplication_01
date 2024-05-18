@@ -1,6 +1,29 @@
+
+{% extends "base.html" %}
+{% block tabtitle %} Home {% endblock tabtitle %}
+{% block title %} Home Page{% endblock title %} 
+
+
+
+
+
+
+
+
+
+
+{% block content %} 
+
+
+
+
 <form action="" method="POST">
     {% csrf_token %}
     {{form.as_p}}
 
     <input type="submit" value="Login">
 </form>
+
+
+
+{% endblock content %} 
