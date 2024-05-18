@@ -35,7 +35,7 @@
             <strong>{{article.Author}}</strong>
         </div>
         <div class="col col-lg-2">
-           Update | Delete
+            <a href="{% url "ArticleUpdateView_url" article.slug %}">Update<a/>  | Delete
         </div>
         </div>
     </div>
