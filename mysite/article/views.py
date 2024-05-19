@@ -44,14 +44,22 @@ class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = ArticleModel
     fields = ["Title", "Body"]
     template_name = "article/ArticleUpdateView.html"
-    
     success_url = reverse_lazy("ArticleListView_url")
+
+    def test_func(self):
+        article = self.get_object()
+        return self.request.user == article.Author
 
 class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = ArticleModel
     template_name = "article/ArticleDeleteView.html"
     success_url = reverse_lazy("ArticleListView_url")
     context_object_name = "articles"
+
+
+    def test_func(self):
+        article = self.get_object()
+        return self.request.user == article.Author
     
     
 
