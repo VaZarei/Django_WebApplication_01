@@ -7,8 +7,6 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-
-
 # Create your views here.
 
 
@@ -38,6 +36,8 @@ class ArticleDetailView(DetailView):
     model = ArticleModel
     template_name = "article/ArticleDetailView.html"
     context_object_name  = "articles"
+
+    
 
 
 class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

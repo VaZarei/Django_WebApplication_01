@@ -19,7 +19,7 @@ class ArticleModel(models.Model):
     Created = models.DateTimeField(auto_now_add=True)
     Edited = models.DateTimeField(auto_now=True) 
     Status = models.CharField(max_length=15, choices=STATUS_OF_ARTICLE, default="checking")
-    slug   = models.SlugField(unique=True, null=True)
+    
 
     def __str__(self) -> str:
         return self.Title
@@ -28,12 +28,9 @@ class ArticleModel(models.Model):
     class Meta:
         ordering = ("-Created",)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+ 
 
-        if not self.slug:
-            self.slug = slugify(self.Title)
-            self.save()
+        
     
 
 
