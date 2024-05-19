@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 {% block tabtitle %}Articles Details{% endblock tabtitle %}
 
-{% block title %}<h2>Articles Details for: "{{articles.Title}}"</h2>{% endblock title %}
+{% block title %}<ul><h5>Article Title: <strong>{{articles.Title}}</strong></h5></ul>{% endblock title %}
 
 
 
 {% block content %}
-
-{{articles.Body}}
+<hr>
+<ul>{{articles.Body}}</ul>
 
 
 <hr>
 <p>Comments For Article : </p>
 <ul>
     {% for comment in object.comments.all %}
-        <li><strong>{{comment.writer}}</strong> | {{comment.comment}}</li>
+    <ul><li><strong>{{comment.writer}}</strong> | {{comment.comment}}</li></ul>
     {% endfor %}
 </ul>
-
+<ul>
 <form action="" method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="comment">
 </form>
-
+</ul>
 {% endblock content %}
 
