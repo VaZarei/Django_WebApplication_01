@@ -12,3 +12,4 @@ class ArticleCommentForm(forms.ModelForm):
             "writer":  forms.HiddenInput(),
 
         }
+       

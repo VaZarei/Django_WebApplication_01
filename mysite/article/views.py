@@ -4,9 +4,10 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import ArticleModel ,ArticleCommentsModel
 from django.urls import reverse_lazy, reverse
-
+from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from article.forms import ArticleCommentForm
+
 # Create your views here.
 
 
@@ -51,15 +52,16 @@ class ArticleDetailView(DetailView):
     
     def post(self, *args, **kwargs):
         self.object = self.get_object()
-        form = self.get_form()
+        form = self.form_class(self.request.POST)
+        
         if form.is_valid():
-            return self.form_valid(form)
+                form.save()
+                return redirect(self.get_success_url())
         else:
-            pass
-
-    def form_valid(self, form):
-        form.save()
-        return super(ArticleDetailView,self).form_valid(form)
+                return self.render_to_response(self.get_context_data(form=form))
+            
+    def get_success_url(self):
+        return reverse("ArticleDetailView_url", kwargs={"pk": self.object.id})
 
     
 
