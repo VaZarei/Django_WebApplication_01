@@ -28,7 +28,13 @@ class ArticleModel(models.Model):
     class Meta:
         ordering = ("-Created",)
 
- 
+class ArticleCommentsModel(models.Model):
+    article = models.ForeignKey(ArticleModel, related_name="comments", on_delete=models.CASCADE)
+    comment = models.TextField()
+    writer  = models.ForeignKey("auth.user", on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return str(self.writer) +" "+ str(self.comment[0:10])
 
         
     

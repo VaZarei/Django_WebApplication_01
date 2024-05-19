@@ -2,11 +2,11 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import ArticleModel
-from django.urls import reverse_lazy
+from .models import ArticleModel ,ArticleCommentsModel
+from django.urls import reverse_lazy, reverse
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from article.forms import ArticleCommentForm
 # Create your views here.
 
 
@@ -36,6 +36,30 @@ class ArticleDetailView(DetailView):
     model = ArticleModel
     template_name = "article/ArticleDetailView.html"
     context_object_name  = "articles"
+    form_class = ArticleCommentForm
+
+
+    def get_success_url(self):
+        return reverse("article_DetailView_URL", kwargs = {"pk":self.object.id})
+        
+
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticleDetailView, self).get_context_data(**kwargs)
+        context['form'] = ArticleCommentForm(initial={"article":self.object, "writer":self.request.user})
+        return context
+    
+    def post(self, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            pass
+
+    def form_valid(self, form):
+        form.save()
+        return super(ArticleDetailView,self).form_valid(form)
 
     
 

@@ -9,4 +9,20 @@
 
 {{articles.Body}}
 
+
+<hr>
+<p>Comments For Article : </p>
+<ul>
+    {% for comment in object.comments.all %}
+        <li><strong>{{comment.writer}}</strong> | {{comment.comment}}</li>
+    {% endfor %}
+</ul>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="comment">
+</form>
+
 {% endblock content %}
+
