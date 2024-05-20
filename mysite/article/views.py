@@ -63,8 +63,6 @@ class ArticleDetailView(DetailView):
     def get_success_url(self):
         return reverse("ArticleDetailView_url", kwargs={"pk": self.object.id})
 
-    
-
 
 class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = ArticleModel

@@ -12,7 +12,7 @@ def siteStaticVariabales(request):
     context = {
         # Short Variables :
 
-        "Site_Name" : "Code24",
+        "Site_Name" : "Code",
         "Phone_Number": "+44-800-700-145",
 
         # HoomePage Content Layer 1

@@ -8,10 +8,11 @@
 {% block content %}
 <hr>
 <ul>{{articles.Body}}</ul>
-
+<hr>
+<ul><li>Author: {{articles.Author}}</li></ul>
 
 <hr>
-<p>Comments For Article : </p>
+<p><ul>Comments For Article : </ul></p>
 <ul>
     {% for comment in object.comments.all %}
     <ul><li><strong>{{comment.writer}}</strong> | {{comment.comment}}</li></ul>
