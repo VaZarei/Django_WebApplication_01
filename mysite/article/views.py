@@ -2,7 +2,7 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import ArticleModel ,ArticleCommentsModel
+from .models import ArticleModel
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -38,12 +38,7 @@ class ArticleDetailView(DetailView):
     template_name = "article/ArticleDetailView.html"
     context_object_name  = "articles"
     form_class = ArticleCommentForm
-
-
-    def get_success_url(self):
-        return reverse("article_DetailView_URL", kwargs = {"pk":self.object.id})
-        
-
+    
 
     def get_context_data(self, **kwargs):
         context = super(ArticleDetailView, self).get_context_data(**kwargs)

@@ -47,7 +47,7 @@
             {% if user == article.Author %}
                  <a href="{% url "ArticleUpdateView_url" article.id %}">Update<a/>  | <a href="{% url "ArticleDeleteView_url" article.id %}">Delete</a> 
             {% else %}
-                <a href="">-<a/> | <a href="">-</a>
+                <h7>Access Denied</h7>
 
             {% endif %}
         </div>
